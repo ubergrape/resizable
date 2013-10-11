@@ -1,0 +1,61 @@
+.resize-handle {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+}
+.resizable {
+	position: absolute;
+}
+
+.resize-handle-hidden {
+	display: none;
+}
+
+.resize-handle-north {
+	left: 0;
+	width: 100%;
+	cursor: ns-resize;
+}
+
+.resize-handle-south {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	cursor: ns-resize;
+}
+
+.resize-handle-east {
+	right: 0;
+	height: 100%;
+	cursor: ew-resize;
+}
+
+.resize-handle-west {
+	left: 0;
+	height: 100%;
+	cursor: ew-resize;
+}
+
+.resize-handle-northeast {
+	right: 0;
+	top: 0;
+	cursor: nesw-resize;
+}
+
+.resize-handle-southeast {
+	right: 0;
+	bottom: 0;
+	cursor: nwse-resize;
+}
+
+.resize-handle-southwest {
+	left: 0;
+	bottom: 0;
+	cursor: nesw-resize;
+}
+
+.resize-handle-northwest {
+	left: 0;
+	top: 0;
+	cursor: nwse-resize;
+}
