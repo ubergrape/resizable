@@ -7,20 +7,36 @@
 	<script src="build/build.js"></script>
 	<style>
 		/*insert styles here*/
+		.rsizable {
+			height: 50px;
+			width: 50px;
+			opacity: 0.5;
+		}
 	</style>
 </head>
 <body>
 		<h4>resizable</h4>
 		<p>Here is an example resizable div that can be resized in any direction.</p>
 		<div class="myResizable"></div>
+		<P>You can also change the resize directions for this resizable at any time by using the 'setDirections' function. Have a go with this <button class="setns">button</button> that will set the handles of the red resizable to just 'north' and 'south' You can reset the direction by using 'setDirections' with an empty parameter.<button class="reset">reset directions.</button></P>
+		<p>You can also use ghosting on your resizable which basically means that as you resize an element, an outline of its original size is visible until resizing is complete to aid the user. See the green draggable.</p>
+		<div class="myGhostResizable"></div>
 	<script>
 		var resizable = require('resizable');
 		var element = document.querySelector('.myResizable');
-		element.style.height = '50px';
-		element.style.width = '50px';
 		element.style.background = 'red';
-		element.style.opacity = 0.5;
 		var myResizable = new resizable(element);
+		var ghostelement = document.querySelector('.myGhostResizable');
+		ghostelement.style.background = 'green';
+		var myGhostResizable = new resizable(ghostelement, {
+			ghosting : true
+		});
+		document.querySelector('.setns').addEventListener('click', function () {
+			myResizable.setDirections(['north', 'south']);
+		});
+		document.querySelector('.reset').addEventListener('click', function () {
+			myResizable.setDirections();
+		});
 	</script>
 </body>
 </html>

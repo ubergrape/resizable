@@ -1,60 +1,57 @@
-.resize-handle {
+.rsize-d {
 	position: absolute;
 	width: 10px;
 	height: 10px;
 }
-.resizable {
+.rsizable {
 	position: absolute;
 }
 
-.resize-handle-hidden {
-	display: none;
-}
 
-.resize-handle-north {
+.rsize-d-north {
 	left: 0;
 	width: 100%;
 	cursor: ns-resize;
 }
 
-.resize-handle-south {
+.rsize-d-south {
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	cursor: ns-resize;
 }
 
-.resize-handle-east {
+.rsize-d-east {
 	right: 0;
 	height: 100%;
 	cursor: ew-resize;
 }
 
-.resize-handle-west {
+.rsize-d-west {
 	left: 0;
 	height: 100%;
 	cursor: ew-resize;
 }
 
-.resize-handle-northeast {
+.rsize-d-northeast {
 	right: 0;
 	top: 0;
 	cursor: nesw-resize;
 }
 
-.resize-handle-southeast {
+.rsize-d-southeast {
 	right: 0;
 	bottom: 0;
 	cursor: nwse-resize;
 }
 
-.resize-handle-southwest {
+.rsize-d-southwest {
 	left: 0;
 	bottom: 0;
 	cursor: nesw-resize;
 }
 
-.resize-handle-northwest {
+.rsize-d-northwest {
 	left: 0;
 	top: 0;
 	cursor: nwse-resize;
