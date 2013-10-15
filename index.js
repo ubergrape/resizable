@@ -3,7 +3,7 @@ module.exports = resizable;
 function resizable(element, options) {
 	if (!(this instanceof resizable)) return new resizable(element, options);
 	this._defaults = {
-		handles: ['north', 'south', 'west', 'east', 'southeast', 'southwest', 'northeast', 'northwest']
+		directions: ['north', 'south', 'west', 'east', 'southeast', 'southwest', 'northeast', 'northwest']
 	};
 	this.element = element;
 	var extend = function (a, b) {
@@ -15,46 +15,51 @@ function resizable(element, options) {
 		return a;
 	}
 	this._options = extend(this._defaults, options);
-	this._handles = this._options.handles;
+	this._directions = this._options.directions;
 	this._ghosting = (this._options.ghosting !== undefined) ? this._options.ghosting : false; 
 	this._create();
 }
-resizable.prototype.setDirections = function (handles) {
-	var resizable = this,
-		currentDirections = resizable._handles;
-	if (handles === undefined) {
-		handles = resizable._defaults.handles;
+resizable.prototype.setGhosting = function (ghosting) {
+	if (ghosting !== undefined) {
+		this._ghosting = ghosting;
 	}
-	resizable._handles = handles;
-	[].forEach.call(currentDirections, function (handle) {
-		if (handles.indexOf(handle) === -1) {
-			resizable.element.querySelector('.rsize-d-' + handle).style.display = 'none';
+}
+resizable.prototype.setDirections = function (directions) {
+	var resizable = this,
+		currentDirections = resizable._directions;
+	if (directions === undefined) {
+		directions = resizable._options.directions;
+	}
+	resizable._directions = directions;
+	[].forEach.call(currentDirections, function (direction) {
+		if (directions.indexOf(direction) === -1) {
+			resizable.element.querySelector('.rsize-d-' + direction).style.display = 'none';
 		}
 	});
-	[].forEach.call(resizable._handles, function (handle) {	
-		if (resizable.element.querySelector('.rsize-d-' + handle) !== undefined) {
-			resizable.element.querySelector('.rsize-d-' + handle).style.display = 'block';
+	[].forEach.call(resizable._directions, function (direction) {	
+		if (resizable.element.querySelector('.rsize-d-' + direction) !== undefined) {
+			resizable.element.querySelector('.rsize-d-' + direction).style.display = 'block';
 		} else {
-			resizable._createHandle(handle);
+			resizable._createHandle(direction);
 		}
 	});
 }
-resizable.prototype._createHandle = function (handle) {
+resizable.prototype._createHandle = function (direction) {
 	var resizable = this,
 		rh = document.createElement('div'),
 		ghost,
 		resize = function (e) {
-			if (handle.indexOf('north') !== -1) {
+			if (direction.indexOf('north') !== -1) {
 				resizable.element.style.top = e.pageY + "px";
 				resizable.element.style.height = (resizable._startH + (resizable._startY - e.pageY)) + "px";
 			}
-			if (handle.indexOf('south') !== -1) {
+			if (direction.indexOf('south') !== -1) {
 				resizable.element.style.height = (resizable._startH + (e.pageY - resizable._startY)) + "px";
 			}
-			if (handle.indexOf('east') !== -1) {
+			if (direction.indexOf('east') !== -1) {
 				resizable.element.style.width = (resizable._startW + (e.pageX - resizable._startX)) + "px";
 			}
-			if (handle.indexOf('west') !== -1) {
+			if (direction.indexOf('west') !== -1) {
 				resizable.element.style.left = e.pageX + "px";
 				resizable.element.style.width = (resizable._startW + (resizable._startX - e.pageX)) + "px";
 			}
@@ -88,15 +93,15 @@ resizable.prototype._createHandle = function (handle) {
 				ghost.style.top = resizable.element.offsetTop + 'px';
 			}
 		};
-	rh.className = rh.className + ' rsize-d rsize-d-' + handle;
-	rh.setAttribute('data-rsize-d', handle);
+	rh.className = rh.className + ' rsize-d rsize-d-' + direction;
+	rh.setAttribute('data-rsize-d', direction);
 	resizable.element.appendChild(rh);
 	rh.addEventListener("mousedown", start, false);
 }
 resizable.prototype._create = function () {
 	var resizable = this;
 	resizable.element.className = resizable.element.className + ' rsizable';
-	[].forEach.call(resizable._options.handles, function (handle) {
-		resizable._createHandle(handle);
+	[].forEach.call(resizable._directions, function (direction) {
+		resizable._createHandle(direction);
 	});
 }
