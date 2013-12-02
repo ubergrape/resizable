@@ -315,5 +315,5 @@ require.alias("resizable/index.js", "resizable/index.js");if (typeof exports == 
 } else if (typeof define == "function" && define.amd) {
   define(function(){ return require("resizable"); });
 } else {
-  this["jheytompkins-resizable"] = require("resizable");
+  this["jh3y-resizable"] = require("resizable");
 }})();

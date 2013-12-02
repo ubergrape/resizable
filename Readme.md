@@ -39,13 +39,13 @@ Example:
 	var myResizable = new resizable(element);
 	myResizable.setDirections(['north', 'south', 'southwest']);
 	
-Examples of all these behaviours can be seen in the [demo](http://jsfiddle.net/u9L2T/) or in the [example](https://github.com/jheytompkins/resizable/blob/master/example.html) page.
+Examples of all these behaviours can be seen in the [demo](http://jsfiddle.net/u9L2T/) or in the [example](https://github.com/jh3y/resizable/blob/master/example.html) page.
 
 ## Use without component package manager
 
- If you want to use resizable without the [component](https://github.com/component/component) package manager you can by simply adding [jheytompkins_resizable.js](https://github.com/jheytompkins/resizable/blob/master/jheytompkins-resizable.js) to your script files and using in the following way:
+ If you want to use resizable without the [component](https://github.com/component/component) package manager you can by simply adding [jh3y_resizable.js](https://github.com/jh3y/resizable/blob/master/jh3y-resizable.js) to your script files and using in the following way:
 
-	 		var resizable = new jheytompkins_resizable(element, {
+	 		var resizable = new jh3y_resizable(element, {
 	 			ghosting: false,
 	 			directions: ['north', 'south', 'west', 'east']
 	 		});
@@ -55,7 +55,7 @@ Examples of all these behaviours can be seen in the [demo](http://jsfiddle.net/u
 
   Install with [component(1)](http://component.io):
 
-    $ component install jheytompkins/resizable
+    $ component install jh3y/resizable
 
 ## License
 
