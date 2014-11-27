@@ -18,6 +18,8 @@ function resizable(element, options) {
 	this._directions = this._options.directions;
 	this._ghosting = (this._options.ghosting !== undefined) ? this._options.ghosting : false; 
 	this._create();
+	this._resizeEv = document.createEvent('Event');
+	this._resizeEv.initEvent('resize', true, true);
 }
 resizable.prototype.setGhosting = function (ghosting) {
 	if (ghosting !== undefined) {
@@ -63,6 +65,7 @@ resizable.prototype._createHandle = function (direction) {
 				resizable.element.style.left = e.pageX + "px";
 				resizable.element.style.width = (resizable._startW + (resizable._startX - e.pageX)) + "px";
 			}
+			resizable.element.dispatchEvent(resizable._resizeEv);
 		},
 		stop = function () {
 			if (resizable._ghosting) {
