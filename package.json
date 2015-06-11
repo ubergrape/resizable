@@ -1,0 +1,12 @@
+{
+  "name": "jh3y-resizable",
+  "description": "Make a resizable component",
+  "version": "0.0.1",
+  "keywords": [],
+  "main": "index.js",
+  "styles": [
+    "resizable.css"
+  ],
+  "dependencies": {},
+  "license": "MIT"
+}
